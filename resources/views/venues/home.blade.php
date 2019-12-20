@@ -1,13 +1,17 @@
  @extends('layouts.app')
  @section('content')
 <div class="container">
-    <a href="{{ url('/admins/create') }}">Dodaj poslovnicu</a> 
-    <a href="{{ url('/rewards/create') }}">Dodaj Nagradu</a>  
+    <br> 
  
 
+<hr>
+@if (session('message'))
+<p>{{ session('message') }}</p>
+@endif
 
-@forelse ($data as $venue)
+@forelse ($venues as $venue)
 <div>
+    <a href="/admins/{{$venue->id}}/show">Uredi poslovnicu</a>
     <li>{{ $venue->name }}</li>
     <li>{{ $venue->adress }}</li>
     <li>{{ $venue->telephone }}</li>
@@ -16,6 +20,8 @@
 @empty
     <p>Nemate poslovnica</p>
 @endforelse
+<a href="{{ url('/admins/create') }}">Dodaj poslovnicu</a>
+
 </div>
 </div>
     

@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reward extends Model
 {
-    //
+    protected $guarded = [];
+
 }

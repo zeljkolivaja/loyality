@@ -12,8 +12,21 @@ class Venue extends Model
     
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('user_id');
     }
+
+    public function rewards()
+    {
+        return $this->hasMany('App\Reward');
+    }
+
+    
+    public function addReward($reward)
+    {
+        $this->rewards()->create($reward);
+    }
+
+
 
 
 }

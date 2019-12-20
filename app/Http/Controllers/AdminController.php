@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Venue;
 use App\User;
+use App\Reward;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,9 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = User::find(auth()->id());
-        $data = $user->venues;
-        return view('admins.home', compact('data'));
+        $user = auth()->user();
+        $venues = $user->venues;
+        return view('venues.home', compact('venues'));
 
     }
 
@@ -28,13 +30,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $user = User::find(auth()->id());
-
-        //  if ($user->admin != 0){
-        //      return "nisi admin brale";
-        //  };
-
-         return view('admins.create');
+      return view('venues.create');
     }
 
     /**
@@ -45,15 +41,10 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $attributes = $this->validateVenue();
-        $venue = Venue::create($attributes);
-        $user = User::find(auth()->id());
-        $venueId = $venue->id;
-        $user->venues()->attach($venueId);
+        $venue = Venue::create($this->validateVenue());
+        $user = auth()->user();
+        $user->venues()->attach($venue->id);
         return redirect('/admins');
-
-
     }
 
     /**
@@ -62,20 +53,23 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Venue $venue)
     {
-        //
+ 
+        $id = $venue->id;
+        $reward = Reward::where('venue_id', $id)->get();
+        $this->authorize('view', $venue);
+        return view('venues.show', compact('venue', 'reward'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Venue $venue)
     {
-        //
+         return view('venues.edit', compact('venue'));   
     }
 
     /**
@@ -85,10 +79,13 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Venue $venue)
     {
-        //
-    }
+        $venue->update($this->validateVenue());
+        session()->flash('message', 'Vaša poslovnica je ažurirana.');
+        return redirect('/admins');
+
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -109,8 +106,6 @@ class AdminController extends Controller
             'telephone' => 'required|min:3',
             'email' => 'required|min:3'
         ]);
-
-
     }
 
 }

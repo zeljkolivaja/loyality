@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Reward;
+use App\Venue;
+
 use Illuminate\Http\Request;
 
 class RewardController extends Controller
@@ -34,9 +36,10 @@ class RewardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Venue $venue, Request $request)
     {
         //
+
     }
 
     /**
@@ -83,4 +86,5 @@ class RewardController extends Controller
     {
         //
     }
+
 }

@@ -4,7 +4,7 @@
 <div class="container"
 
 >
-    <form action="/rewards" method="post">
+    <form action="/admins" method="post">
     @csrf
     <input type="text" name="name" placeholder="Ime Poslovnice" id="">
     <input type="text" name="adress" placeholder="Adresa"  id="">

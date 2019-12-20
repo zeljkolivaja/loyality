@@ -33,9 +33,14 @@ class VenueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Venue $venue, Request $request)
     {
-        //
+        $reward = $this->validateReward();
+
+        $venue->addReward($reward);
+
+        return redirect('/admins');
+
     }
 
     /**
@@ -82,4 +87,16 @@ class VenueController extends Controller
     {
         //
     }
+
+    protected function validateReward()
+    {
+        return request()->validate([
+            'name' => 'required', 'min:3',
+            'reward_points' => 'required|min:2',
+            'expiration_date' => 'required',
+            'image' => 'required'
+             
+        ]);
+    }
+
 }

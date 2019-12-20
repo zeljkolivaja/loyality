@@ -17,8 +17,17 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('admins', 'AdminController');
+// Route::resource('admins', 'AdminController')->middleware('isAdmin');
 Route::resource('rewards', 'RewardController');
+Route::get('admins/','AdminController@index')->middleware('isAdmin');
+Route::post('admins/','AdminController@store')->middleware('isAdmin');
+Route::get('admins/create','AdminController@create')->middleware('isAdmin');
+Route::post('venues/{venue}/rewards', 'VenueController@store')->middleware('isAdmin');
+Route::get('admins/{venue}/show', 'AdminController@show')->middleware('isAdmin');
+Route::get('admins/{venue}/edit', 'AdminController@edit')->middleware('isAdmin');
+Route::patch('admins/{venue}', 'AdminController@update')->middleware('isAdmin');
+
+
 
 
 
