@@ -122,10 +122,13 @@ class UserController extends Controller
         // add the new points to existing ones
         $totalPoints = $venue->getOriginal('pivot_points') + $points;
 
+
         // update the join user_venue table with the new total points status
         DB::table('user_venue')->where('id', $id)->update(array('points' => "$totalPoints"));
 
-        return redirect('/admins');
+        session()->flash('message', 'Bodovi korisnika ' . $user->name .  ' uspješno ažurirani. Novo stanje bodova: ' . $totalPoints);
+
+        return redirect('/admins/' . $venue_id . '/show');
 
      }
 
