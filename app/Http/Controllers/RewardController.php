@@ -39,7 +39,6 @@ class RewardController extends Controller
     public function store(Venue $venue, Request $request)
     {
         //
-
     }
 
     /**
@@ -82,9 +81,12 @@ class RewardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reward $reward)
     {
-        //
+        $reward->delete();
+        session()->flash('message', 'Nagrada je obrisana.');
+        return back();     
     }
+
 
 }

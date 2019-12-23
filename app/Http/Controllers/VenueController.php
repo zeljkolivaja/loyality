@@ -39,7 +39,9 @@ class VenueController extends Controller
 
         $venue->addReward($reward);
 
-        return redirect('/admins');
+        session()->flash('message', 'Vaša nagrada je dodana.');
+        return back();     
+
 
     }
 

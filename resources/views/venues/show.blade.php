@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
- 
+
+
+
 <div class="container">
    <a href="{{ url('/admins') }}">Povratak</a> 
  <br>
+ 
+ @if (session('message'))
+<p>{{ session('message') }}</p>
+@endif
 
   <div>
    <div>
@@ -35,6 +41,15 @@
   <div>
       <li>{{ $rewards->name }}</li>
       <li>{{ $rewards->reward_points }}</li>
+
+      <form method="POST" action="/rewards/{{ $rewards->id }}">    
+        @method('DELETE')     
+        @csrf
+
+            <input type="submit" value="Obriši nagradu">
+       </form>
+
+
     
      <br>
   </div>
