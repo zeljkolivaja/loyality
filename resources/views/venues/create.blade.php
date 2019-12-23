@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container"
+<div class="container">
 
->
+
     <form action="/admins" method="post">
     @csrf
     <input type="text" name="name" placeholder="Ime Poslovnice" id="">
@@ -11,8 +11,8 @@
     <input type="email" name="email" placeholder="Email adresa"  id="">
     <input type="number"  min="0" name="telephone" placeholder="Telefon"  id="">
     <input type="submit" value="Kreiraj Poslovnicu">
-    </form>    
-    
+    </form>
+
 </div>
 
 

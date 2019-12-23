@@ -55,7 +55,7 @@ class AdminController extends Controller
      */
     public function show(Venue $venue)
     {
- 
+
         $id = $venue->id;
         $reward = Reward::where('venue_id', $id)->get();
         $this->authorize('view', $venue);
@@ -69,7 +69,7 @@ class AdminController extends Controller
      */
     public function edit(Venue $venue)
     {
-         return view('venues.edit', compact('venue'));   
+         return view('venues.edit', compact('venue'));
     }
 
     /**
@@ -93,9 +93,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Venue $venue)
     {
-        //
+        $venue->delete();
+        session()->flash('message', 'Poslovnica je obrisana.');
+        return back();
     }
 
     protected function validateVenue()

@@ -21,7 +21,7 @@ class User extends Authenticatable
 
    public function venues()
     {
-        return $this->belongsToMany('App\Venue')->withPivot('user_id');
+        return $this->belongsToMany('App\Venue')->withPivot('id','points');
     }
 
     /**
@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function searchUser($name)
+    {
+
+        return $this->where('name', 'like', "%" . $name . "%")->get();
+
+
+    }
 }

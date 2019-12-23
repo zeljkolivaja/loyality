@@ -18,7 +18,10 @@ Route::get('/', function () {
 
 Auth::routes();
 // Route::resource('admins', 'AdminController')->middleware('isAdmin');
-Route::resource('rewards', 'RewardController');
+// Route::resource('rewards', 'RewardController');
+
+
+
 Route::get('admins/','AdminController@index')->middleware('isAdmin');
 Route::post('admins/','AdminController@store')->middleware('isAdmin');
 Route::get('admins/create','AdminController@create')->middleware('isAdmin');
@@ -26,6 +29,18 @@ Route::post('venues/{venue}/rewards', 'VenueController@store')->middleware('isAd
 Route::get('admins/{venue}/show', 'AdminController@show')->middleware('isAdmin');
 Route::get('admins/{venue}/edit', 'AdminController@edit')->middleware('isAdmin');
 Route::patch('admins/{venue}', 'AdminController@update')->middleware('isAdmin');
+Route::delete('admins/{venue}','AdminController@destroy')->middleware('isAdmin');
+
+
+
+Route::post('rewards/{venue}','RewardController@store')->middleware('isAdmin');
+Route::delete('rewards/{reward}','RewardController@destroy')->middleware('isAdmin');
+
+
+Route::get('users/','UserController@index')->middleware('isAdmin');
+Route::post('users/','UserController@show')->middleware('isAdmin');
+Route::patch('users/{user}', 'userController@update')->middleware('isAdmin');
+
 
 
 

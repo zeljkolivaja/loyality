@@ -26,8 +26,7 @@ class RewardController extends Controller
      */
     public function create()
     {
-         return view('rewards.create');
-
+        return view('rewards.create');
     }
 
     /**
@@ -38,7 +37,11 @@ class RewardController extends Controller
      */
     public function store(Venue $venue, Request $request)
     {
-        //
+        $reward = $this->validateReward();
+        $venue->addReward($reward);
+
+        session()->flash('message', 'Vaša nagrada je dodana.');
+        return back();
     }
 
     /**
@@ -58,9 +61,9 @@ class RewardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reward $reward)
     {
-        //
+        return view('rewards.edit', compact('reward'));
     }
 
     /**
@@ -85,8 +88,18 @@ class RewardController extends Controller
     {
         $reward->delete();
         session()->flash('message', 'Nagrada je obrisana.');
-        return back();     
+        return back();
     }
 
 
+    protected function validateReward()
+    {
+        return request()->validate([
+            'name' => 'required', 'min:3',
+            'reward_points' => 'required|min:2',
+            'expiration_date' => 'required',
+            'image' => 'required'
+
+        ]);
+    }
 }

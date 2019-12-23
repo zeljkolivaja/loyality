@@ -4,33 +4,45 @@
 
 
 <div class="container">
-   <a href="{{ url('/admins') }}">Povratak</a> 
+   <a href="{{ url('/admins') }}">Povratak</a>
  <br>
- 
+
+ <br>
+
  @if (session('message'))
 <p>{{ session('message') }}</p>
 @endif
 
+Pronađi korisnika
+<form action="/users" method="get">
+    <input type="search" name="name" placeholder="Korisničko ime" id="">
+    <input type="hidden" name="venue_id" value="{{$venue->id}}" id="">
+    <input type="submit" value="Pretraga">
+    </form>
+
+    <br>
+
   <div>
    <div>
-      <a href="/admins/{{$venue->id}}/edit">Editiraj poslovnicu</a>
+      <a href="/admins/{{$venue->id}}/edit">Ažuriraj podatke</a>
       <li>{{ $venue->name }}</li>
       <li>{{ $venue->adress }}</li>
       <li>{{ $venue->telephone }}</li>
       <li>{{ $venue->email }}</li>
       <br>
-   
 
-   <form action="/venues/{{$venue->id}}/rewards" method="post">
-      @csrf
-      <input type="text" name="name" placeholder="Naziv nagrade" id="">
-      <input type="text" name="image" placeholder="Slika" id="">
-       <input type="number"  min="0" name="reward_points" placeholder="Vrijednost nagrade"  id="">
-       <input type="date"  name="expiration_date" placeholder="Datum isteka nagrade"  id="">
-   
-      <input type="submit" value="Kreiraj Nagradu">
-      </form>      
- </div>
+
+
+ <form action="/rewards/{{$venue->id}}" method="post">
+    @csrf
+    <input type="text" name="name" placeholder="Naziv nagrade" id="">
+    <input type="text" name="image" placeholder="Slika" id="">
+     <input type="number"  min="0" name="reward_points" placeholder="Vrijednost nagrade"  id="">
+     <input type="date"  name="expiration_date" placeholder="Datum isteka nagrade"  id="">
+
+    <input type="submit" value="Kreiraj Nagradu">
+    </form>
+</div>
 
 
 
@@ -39,18 +51,19 @@
 @forelse ($reward as $rewards)
 <div>
   <div>
+    <a href="/rewards/{{ $rewards->id}}/edit">Editiraj nagradu</a>
       <li>{{ $rewards->name }}</li>
       <li>{{ $rewards->reward_points }}</li>
 
-      <form method="POST" action="/rewards/{{ $rewards->id }}">    
-        @method('DELETE')     
+      <form method="POST" action="/rewards/{{ $rewards->id }}">
+        @method('DELETE')
         @csrf
 
             <input type="submit" value="Obriši nagradu">
        </form>
 
 
-    
+
      <br>
   </div>
 @empty
@@ -58,7 +71,7 @@
 @endforelse
 
 
-     
+
 
 
 @endsection
