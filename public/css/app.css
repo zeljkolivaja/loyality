@@ -2769,6 +2769,7 @@ textarea.form-control.is-invalid {
           flex-flow: row wrap;
   -webkit-box-align: center;
           align-items: center;
+
 }
 
 .form-inline .form-check {
@@ -5241,6 +5242,11 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+
 }
 
 .card > hr {

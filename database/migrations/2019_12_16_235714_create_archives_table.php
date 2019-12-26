@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersPointsArchivesTable extends Migration
+class CreateArchivesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateUsersPointsArchivesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_points_archives', function (Blueprint $table) {
+        Schema::create('archives', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('used_points');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('venue_id');
 
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-
+            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
         });
     }
 
@@ -33,6 +30,6 @@ class CreateUsersPointsArchivesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_points_archives');
+        Schema::dropIfExists('archives');
     }
 }

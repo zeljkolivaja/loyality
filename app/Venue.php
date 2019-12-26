@@ -19,6 +19,11 @@ class Venue extends Model
         return $this->hasMany('App\Reward');
     }
 
+    public function archives()
+    {
+        return $this->hasMany('App\Archive');
+    }
+
 
     public function addReward($reward)
     {

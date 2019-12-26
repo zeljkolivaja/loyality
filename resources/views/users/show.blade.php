@@ -28,21 +28,22 @@ Ukupni bodovi korisnika : {{$points}}
 <br>
     @foreach ($rewards as $reward)
 
-    Nagrada : {{$reward->name}} 
+    Nagrada : {{$reward->name}}
     <br>
     Vrijednost nagrade : {{$reward->reward_points}}
-    
+
     <div>
       <form action="/users/{{$getUser->id}}" method="post">
       @csrf
       {{ method_field('PATCH') }}
        <input type="hidden" name="pointsAdd" value="{{-$reward->reward_points}}" placeholder="{{$points}}"  id="">
        <input type="hidden" name="venueId" value="{{$venue_id}}" id="">
-       <input type="submit" value="Dodijeli Nagradu">
+       <input type="submit"  {{  $reward->reward_points > $points ? "disabled "  : ""  }}
+       value=" {{  $reward->reward_points > $points ? "Nedovoljno bodova "  : "Dodijeli nagradu"  }}">
       </form>
   </div>
-     
-        
+
+
     @endforeach
 
 

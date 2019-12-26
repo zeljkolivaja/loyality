@@ -12,12 +12,12 @@
 
         @forelse ($venues as $venue)
         <div>
-            <a href="/admins/{{$venue->id}}/show">Upravljaj poslovnicom {{ $venue->name }}</a>
-            <form method="POST" action="/admins/{{ $venue->id }}">
-                @method('DELETE')
-                @csrf
-                <input type="submit" value="Obriši poslovnicu {{ $venue->name }}">
-            </form>
+
+
+            <a class="btn btn-primary" href="/admins/{{$venue->id}}/show" role="button">Upravljaj poslovnicom {{ $venue->name }}</a>
+
+        </div>
+
 
             <br>
 
@@ -25,9 +25,10 @@
             @empty
             <p>Nemate poslovnica</p>
             @endforelse
-            <a href="{{ url('/admins/create') }}">Dodaj novu poslovnicu</a>
+            <br>
+             <a href="{{ url('/admins/create') }}">Dodaj novu poslovnicu</a>
 
-        </div>
+
 
 
 

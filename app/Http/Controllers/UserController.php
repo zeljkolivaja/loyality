@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Archive;
+
 use DB;
 
 
@@ -70,7 +72,7 @@ class UserController extends Controller
 
         // find the single venue we wish to fetch
         $venue = $getUser->venues->find($venue_id);
- 
+
         //check if the user have any points for selected venue, if not default $points placeholder to 0 points
         if ($venue == null) {
             $points = "0";
@@ -80,7 +82,7 @@ class UserController extends Controller
 
         //fetch the rewards for selected venuue
         $rewards = $venue->rewards;
- 
+
         return view('users.show', compact('getUser', 'points', 'venue_id', 'rewards'));
     }
 
@@ -102,7 +104,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user, Request $request)
+    public function update(User $user, Archive $archive, Request $request)
     {
         //request the id of the venue we wish to update
         //request the points we wisth to add to it
@@ -132,6 +134,23 @@ class UserController extends Controller
 
         // update the join user_venue table with the new total points status
         DB::table('user_venue')->where('id', $id)->update(array('points' => "$totalPoints"));
+
+
+        // check does the user have any used points in archives table, if he does update, if not create a record
+
+        if ($points<0) {
+            $points = ltrim($points, '-');
+
+            if ($user->venues->find($venue_id)->archives[0]["id"] != null) {
+                $updateArchive = $archive->find($user->venues->find($venue_id)->archives[0]["id"]);
+                $archiveModel = $archive->find($user->venues->find($venue_id)->archives[0]["id"]);
+                $totalArchivePoints = $archiveModel->used_points + $points;
+                $archiveModel->update(["used_points" => $totalArchivePoints ]);
+            }
+        }
+
+        //https://stackoverflow.com/questions/27828476/laravel-save-one-to-many-relationship
+
 
         session()->flash('message', 'Bodovi korisnika ' . $user->name .  ' uspješno ažurirani. Novo stanje bodova: ' . $totalPoints);
 

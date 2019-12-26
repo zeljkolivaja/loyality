@@ -20,7 +20,6 @@ class AdminController extends Controller
         $user = auth()->user();
         $venues = $user->venues;
         return view('venues.home', compact('venues'));
-
     }
 
     /**
@@ -30,7 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-      return view('venues.create');
+        return view('venues.create');
     }
 
     /**
@@ -55,7 +54,6 @@ class AdminController extends Controller
      */
     public function show(Venue $venue)
     {
-
         $id = $venue->id;
         $reward = Reward::where('venue_id', $id)->get();
         $this->authorize('view', $venue);
@@ -69,7 +67,7 @@ class AdminController extends Controller
      */
     public function edit(Venue $venue)
     {
-         return view('venues.edit', compact('venue'));
+        return view('venues.edit', compact('venue'));
     }
 
     /**
@@ -84,8 +82,7 @@ class AdminController extends Controller
         $venue->update($this->validateVenue());
         session()->flash('message', 'Vaša poslovnica je ažurirana.');
         return redirect('/admins');
-
-     }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -97,7 +94,7 @@ class AdminController extends Controller
     {
         $venue->delete();
         session()->flash('message', 'Poslovnica je obrisana.');
-        return back();
+        return redirect('/admins');
     }
 
     protected function validateVenue()
@@ -109,5 +106,4 @@ class AdminController extends Controller
             'email' => 'required|min:3'
         ]);
     }
-
 }
