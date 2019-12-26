@@ -12,14 +12,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 // Route::resource('admins', 'AdminController')->middleware('isAdmin');
 // Route::resource('rewards', 'RewardController');
 
+
+Route::get('/','VisitorController@index')->middleware('auth');
 
 
 Route::get('admins/','AdminController@index')->middleware('isAdmin');
@@ -34,7 +36,11 @@ Route::delete('admins/{venue}','AdminController@destroy')->middleware('isAdmin')
 
 
 Route::post('rewards/{venue}','RewardController@store')->middleware('isAdmin');
+Route::get('rewards/{reward}/edit', 'RewardController@edit')->middleware('isAdmin');
 Route::delete('rewards/{reward}','RewardController@destroy')->middleware('isAdmin');
+Route::patch('rewards/{reward}', 'RewardController@update')->middleware('isAdmin');
+
+
 
 
 Route::get('users/','UserController@index')->middleware('isAdmin');

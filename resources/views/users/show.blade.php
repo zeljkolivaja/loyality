@@ -18,8 +18,32 @@ Ukupni bodovi korisnika : {{$points}}
     {{ method_field('PATCH') }}
      <input type="number" name="pointsAdd" value="{{$points}}" placeholder="{{$points}}"  id="">
      <input type="hidden" name="venueId" value="{{$venue_id}}" id="">
-     <input type="submit" value="Dodaj Bodove">
+     <input type="submit" value="Ažuriraj Bodove">
     </form>
+    Ukoliko bodove želite oduzeti ručno, jednostavno prilikom unosa bodova dodajte -
+    npr -100
+
+
+<br>
+<br>
+    @foreach ($rewards as $reward)
+
+    Nagrada : {{$reward->name}} 
+    <br>
+    Vrijednost nagrade : {{$reward->reward_points}}
+    
+    <div>
+      <form action="/users/{{$getUser->id}}" method="post">
+      @csrf
+      {{ method_field('PATCH') }}
+       <input type="hidden" name="pointsAdd" value="{{-$reward->reward_points}}" placeholder="{{$points}}"  id="">
+       <input type="hidden" name="venueId" value="{{$venue_id}}" id="">
+       <input type="submit" value="Dodijeli Nagradu">
+      </form>
+  </div>
+     
+        
+    @endforeach
 
 
 @endsection

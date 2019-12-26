@@ -63,7 +63,7 @@ class RewardController extends Controller
      */
     public function edit(Reward $reward)
     {
-        return view('rewards.edit', compact('reward'));
+         return view('rewards.edit', compact('reward'));
     }
 
     /**
@@ -73,9 +73,11 @@ class RewardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Reward $reward, Request $request)
     {
-        //
+        $reward->update($this->validateReward());
+        session()->flash('message', 'Vaša nagrada je ažurirana.');
+        return redirect('/admins');
     }
 
     /**

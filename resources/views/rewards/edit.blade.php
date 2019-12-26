@@ -21,7 +21,7 @@
 
       <label for="image">Datum trajanja</label>
       <input type="date" name="expiration_date" value="{{$reward->expiration_date}}"  id="">
-
+      <input type="submit" value="Ažuriraj nagradu">
 
       </form>
       <br>

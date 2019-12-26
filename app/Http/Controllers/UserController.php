@@ -23,7 +23,11 @@ class UserController extends Controller
         //find user
         $searchInput = $request->name;
         $users = $user->searchUser('%' . $searchInput . '%');
+
+        //take our venue id
         $venue_id = ($request->venue_id);
+
+
         return view('users.index', compact('users', 'venue_id'));
     }
 
@@ -66,7 +70,7 @@ class UserController extends Controller
 
         // find the single venue we wish to fetch
         $venue = $getUser->venues->find($venue_id);
-
+ 
         //check if the user have any points for selected venue, if not default $points placeholder to 0 points
         if ($venue == null) {
             $points = "0";
@@ -74,7 +78,10 @@ class UserController extends Controller
             $points = $venue->getOriginal('pivot_points');
         }
 
-        return view('users.show', compact('getUser', 'points', 'venue_id'));
+        //fetch the rewards for selected venuue
+        $rewards = $venue->rewards;
+ 
+        return view('users.show', compact('getUser', 'points', 'venue_id', 'rewards'));
     }
 
     /**
@@ -107,9 +114,9 @@ class UserController extends Controller
 
         if($user->venues->find($venue_id) == null){
              $user->venues()->attach($venue_id);
+             $user->refresh();
              $venue = $user->venues->find($venue_id);
              $venue->refresh();
-
         }
 
         $venue = $user->venues->find($venue_id);
