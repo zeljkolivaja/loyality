@@ -21,31 +21,33 @@ Auth::routes();
 // Route::resource('rewards', 'RewardController');
 
 
-Route::get('/','VisitorController@index')->middleware('auth');
+Route::get('/', 'VisitorController@index')->middleware('auth');
 
 
-Route::get('admins/','AdminController@index')->middleware('isAdmin');
-Route::post('admins/','AdminController@store')->middleware('isAdmin');
-Route::get('admins/create','AdminController@create')->middleware('isAdmin');
+Route::get('admins/', 'AdminController@index')->middleware('isAdmin');
+Route::post('admins/', 'AdminController@store')->middleware('isAdmin');
+Route::get('admins/create', 'AdminController@create')->middleware('isAdmin');
 Route::post('venues/{venue}/rewards', 'VenueController@store')->middleware('isAdmin');
 Route::get('admins/{venue}/show', 'AdminController@show')->middleware('isAdmin');
 Route::get('admins/{venue}/edit', 'AdminController@edit')->middleware('isAdmin');
 Route::patch('admins/{venue}', 'AdminController@update')->middleware('isAdmin');
-Route::delete('admins/{venue}','AdminController@destroy')->middleware('isAdmin');
+Route::delete('admins/{venue}', 'AdminController@destroy')->middleware('isAdmin');
 
 
 
-Route::post('rewards/{venue}','RewardController@store')->middleware('isAdmin');
+Route::post('rewards/{venue}', 'RewardController@store')->middleware('isAdmin');
 Route::get('rewards/{reward}/edit', 'RewardController@edit')->middleware('isAdmin');
-Route::delete('rewards/{reward}','RewardController@destroy')->middleware('isAdmin');
+Route::delete('rewards/{reward}', 'RewardController@destroy')->middleware('isAdmin');
 Route::patch('rewards/{reward}', 'RewardController@update')->middleware('isAdmin');
 
 
 
 
-Route::get('users/','UserController@index')->middleware('isAdmin');
-Route::post('users/','UserController@show')->middleware('isAdmin');
-Route::patch('users/{user}', 'userController@update')->middleware('isAdmin');
+Route::get('users/', 'UserController@index')->middleware('isAdmin');
+Route::post('users/', 'UserController@show')->middleware('isAdmin');
+Route::patch('users/{user}', 'UserController@update')->middleware('isAdmin');
+Route::post('users/{venue}/stats', 'UserController@stats')->middleware('isAdmin');
+
 
 
 

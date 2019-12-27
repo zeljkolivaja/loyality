@@ -22,6 +22,8 @@ class AdminController extends Controller
         return view('venues.home', compact('venues'));
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *

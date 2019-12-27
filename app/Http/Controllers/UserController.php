@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Venue;
 use App\Archive;
 use DB;
-
 
 class UserController extends Controller
 {
@@ -24,7 +24,7 @@ class UserController extends Controller
 
         //take our venue id
         $venue_id = ($request->venue_id);
-       return view('users.index', compact('users', 'venue_id'));
+        return view('users.index', compact('users', 'venue_id'));
     }
 
     /**
@@ -122,7 +122,15 @@ class UserController extends Controller
         //get the id of the venue we wish to update
         $id = $venue->getOriginal('pivot_id');
 
-        // add the new points to existing ones
+
+        // check if the total user points whent to negative, if they do abort
+        $check = $venue->getOriginal('pivot_points') + $points;
+
+        if ($check < 0) {
+
+            return "ne zajebavaj";
+        }
+         // add the new points to existing ones
         $totalPoints = $venue->getOriginal('pivot_points') + $points;
 
 
@@ -132,18 +140,20 @@ class UserController extends Controller
 
         // check does the user have any used points in archives table, and are the points negative(giving him award)
         // if its true update archive table, if not create a new record in archive table and add points there
-        if ($points < 0 && isset($user->venues->find($venue_id)->archives[0]["id"])) {
-            $points = ltrim($points, '-');
-            $updateArchive = $archive->find($user->venues->find($venue_id)->archives[0]["id"]);
-            $archiveModel = $archive->find($user->venues->find($venue_id)->archives[0]["id"]);
-            $totalArchivePoints = $archiveModel->used_points + $points;
-            $archiveModel->update(["used_points" => $totalArchivePoints]);
-        } else {
-            $points = ltrim($points, '-');
-            $archive = new Archive;
-            $archive->used_points = $points;
-            $venue->archives()->save($archive);
-        }
+        // if ($points < 0 && isset($user->venues->find($venue_id)->archives[0]["id"])) {
+        //     $points = ltrim($points, '-');
+        //     $updateArchive = $archive->find($user->venues->find($venue_id)->archives[0]["id"]);
+        //     $archiveModel = $archive->find($user->venues->find($venue_id)->archives[0]["id"]);
+        //     $totalArchivePoints = $archiveModel->used_points + $points;
+        //     $archiveModel->update(["used_points" => $totalArchivePoints]);
+        // } else {
+
+        // $points = ltrim($points, '-');
+
+        $archive = new Archive;
+        $archive->used_points = $points;
+        $venue->archives()->save($archive);
+        // }
 
         //https://stackoverflow.com/questions/27828476/laravel-save-one-to-many-relationship
 
@@ -163,5 +173,29 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function stats(Venue $venue, User $user, Archive $archive)
+    {
+
+        // $data = Venue::where('id',1)->with('users', 'archives')->get();
+
+
+
+    //    $data =  $archive->find(6);
+
+
+    //     $data = $archive->hasManyThrough('App\User', 'App\Venue');
+
+
+
+    //    dd($data);
+
+       return view('venues/stats', compact('data'));
+
+
+        // $data = $user->venues->find($venue->id)->archives;
+
+
     }
 }

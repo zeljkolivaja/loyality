@@ -25,6 +25,14 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
+
+        <form class="form-inline justify-content-center" action="/users/{{$venue->id}}/stats" method="post">
+            @csrf
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Statistike poslovnice</button>
+        </form>
+
+
         <br>
 
         <div>
