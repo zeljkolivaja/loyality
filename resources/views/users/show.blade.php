@@ -26,6 +26,9 @@ Ukupni bodovi korisnika : {{$points}}
 
 <br>
 <br>
+
+
+    @if ($rewards != null)
     @foreach ($rewards as $reward)
 
     Nagrada : {{$reward->name}}
@@ -45,6 +48,10 @@ Ukupni bodovi korisnika : {{$points}}
 
 
     @endforeach
+
+    @else
+        Nemate unešenih nagrada
+    @endif
 
 
 @endsection
