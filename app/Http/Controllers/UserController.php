@@ -54,34 +54,29 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, User $user)
+    public function show(User $user, Venue $venue, Request $request)
     {
 
-        // find the user
-        $getUser = $user->find($request->id);
-
-        // get the id of selected venue
-
-        $venue_id = $request->venueId;
+        $venue_id = $venue->id;
 
         // find the single venue we wish to fetch
-        $venue = $getUser->venues->find($venue_id);
+        $ourVenue = $user->venues->find($venue->id);
 
-        //check if the user have any points for selected venue, if not default $points placeholder to 0 points
-        if ($venue == null) {
+        //check if the user have any points for selected venue, if not default $points to 0 points
+        if ($ourVenue == null) {
             $points = "0";
         } else {
-            $points = $venue->getOriginal('pivot_points');
+            $points = $ourVenue->getOriginal('pivot_points');
         }
 
-        //fetch the rewards for selected venuue
-        if (isset($venue->rewards)){
-            $rewards = $venue->rewards;
-        }else{
+        //fetch the rewards for selected venue
+        if (isset($ourVenue->rewards)) {
+            $rewards = $ourVenue->rewards;
+        } else {
             $rewards=null;
         }
 
-        return view('users.show', compact('getUser', 'points', 'venue_id', 'rewards'));
+        return view('users.show', compact('user', 'points', 'venue_id', 'rewards'));
     }
 
     /**
@@ -139,10 +134,9 @@ class UserController extends Controller
 
 
         // update the join user_venue table with the new total points status
-        if($user->venues->find($venue_id) == null){
-
+        if ($user->venues->find($venue_id) == null) {
             DB::table('user_venue')->where('id', $id)->store(array('points' => "$totalPoints"));
-        }else{
+        } else {
             DB::table('user_venue')->where('id', $id)->update(array('points' => "$totalPoints"));
         }
 

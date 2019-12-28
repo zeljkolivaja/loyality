@@ -44,7 +44,7 @@ Route::patch('rewards/{reward}', 'RewardController@update')->middleware('isAdmin
 
 
 Route::get('users/', 'UserController@index')->middleware('isAdmin');
-Route::post('users/', 'UserController@show')->middleware('isAdmin');
+Route::post('users/{user}/{venue}', 'UserController@show')->middleware('isAdmin');
 Route::patch('users/{user}', 'UserController@update')->middleware('isAdmin');
 Route::post('users/{venue}/stats', 'UserController@stats')->middleware('isAdmin');
 

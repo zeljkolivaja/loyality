@@ -5,7 +5,7 @@
    <a href="{{ url('/admins') }}">Povratak</a>
  <br>
 
- Korisnik : {{$getUser->name}}
+ Korisnik : {{$user->name}}
 
 
 <br>
@@ -13,7 +13,7 @@
 Ukupni bodovi korisnika : {{$points}}
 
 
-<form action="/users/{{$getUser->id}}" method="post">
+<form action="/users/{{$user->id}}" method="post">
     @csrf
     {{ method_field('PATCH') }}
      <input type="number" name="pointsAdd" value="{{$points}}" placeholder="{{$points}}"  id="">
@@ -36,7 +36,7 @@ Ukupni bodovi korisnika : {{$points}}
     Vrijednost nagrade : {{$reward->reward_points}}
 
     <div>
-      <form action="/users/{{$getUser->id}}" method="post">
+      <form action="/users/{{$user->id}}" method="post">
       @csrf
       {{ method_field('PATCH') }}
        <input type="hidden" name="pointsAdd" value="{{-$reward->reward_points}}" placeholder="{{$points}}"  id="">

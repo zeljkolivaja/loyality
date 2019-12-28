@@ -20,10 +20,8 @@
             @forelse ($users as $user)
                 <li class="list-group-item">
 
-                    <form action="users/" method="post">
+                    <form action="users/{{$user->id}}/{{$venue_id}}" method="post">
                         @csrf
-                        <input type="hidden" name="id" value="{{$user->id}}" id="">
-                        <input type="hidden" name="venueId" value="{{$venue_id}}" id="">
 
                        <input type="submit" class="btn btn-danger" value="{{$user->name}}">
 
