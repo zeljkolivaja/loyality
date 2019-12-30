@@ -36,6 +36,7 @@ Route::post('venues/{venue}/rewards', 'VenueController@store')->middleware('isAd
 Route::post('venues/{venue}/createNews', 'VenueController@news')->middleware('isAdmin');
 Route::get('venues/{venue}/createNews', 'VenueController@createNews')->middleware('isAdmin');
 Route::get('venues/{venue}/news', 'VenueController@showNews')->middleware('isAdmin');
+Route::get('venues/{venue}/info', 'VenueController@info')->middleware('isAdmin');
 
 
 
@@ -44,6 +45,7 @@ Route::get('venues/{venue}/news', 'VenueController@showNews')->middleware('isAdm
 
 
 
+Route::get('rewards/{venue}/createReward', 'RewardController@create')->middleware('isAdmin');
 Route::post('rewards/{venue}', 'RewardController@store')->middleware('isAdmin');
 Route::get('rewards/{reward}/edit', 'RewardController@edit')->middleware('isAdmin');
 Route::delete('rewards/{reward}', 'RewardController@destroy')->middleware('isAdmin');

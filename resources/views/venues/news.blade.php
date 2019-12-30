@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 29rem;">
         <div class="card-body">
           <h5 class="card-title">{{$article->name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Naslov članka</h6>

@@ -126,6 +126,12 @@ class VenueController extends Controller
 
     }
 
+    public function info(Venue $venue, Request $request)
+    {
+         return view('venues.info', compact('venue'));
+
+    }
+
 
 
     protected function validateNews()

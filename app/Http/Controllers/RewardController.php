@@ -24,9 +24,9 @@ class RewardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Venue $venue)
     {
-        return view('rewards.create');
+         return view('rewards.create', compact('venue'));
     }
 
     /**
