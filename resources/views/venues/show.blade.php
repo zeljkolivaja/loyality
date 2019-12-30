@@ -58,14 +58,12 @@
                     <p><a href="/rewards/{{ $rewards->id}}/edit" class="btn btn-primary"">Editiraj nagradu</a></p>
 
 
-              <form method=" POST" action="/rewards/{{ $rewards->id }}">
+              <form method="POST" action="/rewards/{{ $rewards->id }}">
                             @method('DELETE')
                             @csrf
                             <input type="submit" class="btn btn-danger" value="Obriši nagradu {{ $rewards->name }}"
                                 onclick="return confirm('Jeste li sigurni da želite obrisati nagradu ')" ;>
                             </form>
-
-
                 </div>
             </div>
 
