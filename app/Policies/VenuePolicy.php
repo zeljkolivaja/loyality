@@ -32,7 +32,6 @@ class VenuePolicy
     {
        $venueOwner = $venue->users[0]->getOriginal('pivot_user_id');
        return $venueOwner == $user->id;
-        
 
     }
 

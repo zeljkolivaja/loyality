@@ -56,22 +56,22 @@ class UserController extends Controller
      */
     public function show(User $user, Venue $venue, Request $request)
     {
-
         $venue_id = $venue->id;
 
         // find the single venue we wish to fetch
-        $ourVenue = $user->venues->find($venue->id);
+        $userVenuePivot = $user->venues->find($venue->id);
 
         //check if the user have any points for selected venue, if not default $points to 0 points
-        if ($ourVenue == null) {
+
+        if ($userVenuePivot == null) {
             $points = "0";
         } else {
-            $points = $ourVenue->getOriginal('pivot_points');
+            $points = $userVenuePivot->getOriginal('pivot_points');
         }
 
         //fetch the rewards for selected venue
-        if (isset($ourVenue->rewards)) {
-            $rewards = $ourVenue->rewards;
+        if (isset($userVenuePivot->rewards)) {
+            $rewards = $userVenuePivot->rewards;
         } else {
             $rewards=null;
         }

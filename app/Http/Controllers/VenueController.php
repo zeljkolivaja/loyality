@@ -40,10 +40,9 @@ class VenueController extends Controller
         $venue->addReward($reward);
 
         session()->flash('message', 'Vaša nagrada je dodana.');
-        return back();     
-
-
+        return back();
     }
+
 
     /**
      * Display the specified resource.
@@ -97,8 +96,43 @@ class VenueController extends Controller
             'reward_points' => 'required|min:2',
             'expiration_date' => 'required',
             'image' => 'required'
-             
+
         ]);
     }
 
+    public function createNews(Venue $venue, Request $request)
+    {
+        return view('venues.createNews', compact('venue'));
+
+    }
+
+
+    public function news(Venue $venue, Request $request)
+    {
+        $news = $this->validateNews();
+
+        $venue->addNews($news);
+
+        session()->flash('message', 'Vaša vijest je dodana.');
+        return back();
+    }
+
+
+
+    public function showNews(Venue $venue, Request $request)
+    {
+        $news = $venue->news;
+        return view('venues.news', compact('news'));
+
+    }
+
+
+
+    protected function validateNews()
+    {
+        return request()->validate([
+            'name' => 'required', 'min:3',
+            'body' => 'required|min:10'
+        ]);
+    }
 }

@@ -29,8 +29,12 @@
         <form class="form-inline justify-content-center" action="/users/{{$venue->id}}/stats" method="post">
             @csrf
 
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Statistike poslovnice</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" disabled>Statistike poslovnice</button>
         </form>
+
+
+        <a class="btn btn-primary" href="/venues/{{$venue->id}}/createNews" role="button">Dodaj Vijesti</a>
+
 
 
         <br>
@@ -54,7 +58,7 @@
                     <div class="card-body">
 
                         <p><a href="/admins/{{$venue->id}}/edit" class="btn btn-primary"">Ažuriraj podatke o poslovnici</a></p>
-              <form method=" POST" action="/admins/{{ $venue->id }}">
+              <form method="POST" action="/admins/{{ $venue->id }}">
                                 @method('DELETE')
                                 @csrf
                                 <input type="submit" class="btn btn-danger" value="Obriši poslovnicu {{ $venue->name }}"
@@ -85,6 +89,8 @@
 
 
             </div>
+
+
 
 
 

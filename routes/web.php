@@ -27,11 +27,20 @@ Route::get('/', 'VisitorController@index')->middleware('auth');
 Route::get('admins/', 'AdminController@index')->middleware('isAdmin');
 Route::post('admins/', 'AdminController@store')->middleware('isAdmin');
 Route::get('admins/create', 'AdminController@create')->middleware('isAdmin');
-Route::post('venues/{venue}/rewards', 'VenueController@store')->middleware('isAdmin');
 Route::get('admins/{venue}/show', 'AdminController@show')->middleware('isAdmin');
 Route::get('admins/{venue}/edit', 'AdminController@edit')->middleware('isAdmin');
 Route::patch('admins/{venue}', 'AdminController@update')->middleware('isAdmin');
 Route::delete('admins/{venue}', 'AdminController@destroy')->middleware('isAdmin');
+
+Route::post('venues/{venue}/rewards', 'VenueController@store')->middleware('isAdmin');
+Route::post('venues/{venue}/createNews', 'VenueController@news')->middleware('isAdmin');
+Route::get('venues/{venue}/createNews', 'VenueController@createNews')->middleware('isAdmin');
+Route::get('venues/{venue}/news', 'VenueController@showNews')->middleware('isAdmin');
+
+
+
+
+
 
 
 

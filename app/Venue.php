@@ -19,6 +19,11 @@ class Venue extends Model
         return $this->hasMany('App\Reward');
     }
 
+    public function news()
+    {
+        return $this->hasMany('App\News');
+    }
+
     public function archives()
     {
         return $this->hasMany('App\Archive');
@@ -28,5 +33,10 @@ class Venue extends Model
     public function addReward($reward)
     {
         $this->rewards()->create($reward);
+    }
+
+    public function addNews($news)
+    {
+        $this->news()->create($news);
     }
 }

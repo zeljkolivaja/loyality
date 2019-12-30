@@ -43,7 +43,7 @@
           <li class="list-group-item">Vestibulum at eros</li> --}}
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">{{$venue->venueName}} Promocije i novosti</a>
+          <a href="/venues/{{$venue->id}}/news" class="card-link">{{$venue->venueName}} Promocije i novosti</a>
           {{-- <a href="#" class="card-link">Another link</a> --}}
         </div>
       </div>
