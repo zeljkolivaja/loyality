@@ -35,6 +35,9 @@ class VenueController extends Controller
      */
     public function store(Venue $venue, Request $request)
     {
+
+        $this->authorize('view', $venue);
+
         $reward = $this->validateReward();
 
         $venue->addReward($reward);
@@ -102,6 +105,8 @@ class VenueController extends Controller
 
     public function createNews(Venue $venue, Request $request)
     {
+        $this->authorize('view', $venue);
+
         return view('venues.createNews', compact('venue'));
 
     }
@@ -109,6 +114,8 @@ class VenueController extends Controller
 
     public function news(Venue $venue, Request $request)
     {
+        $this->authorize('view', $venue);
+
         $news = $this->validateNews();
 
         $venue->addNews($news);
@@ -121,6 +128,7 @@ class VenueController extends Controller
 
     public function showNews(Venue $venue, Request $request)
     {
+
         $news = $venue->news;
         return view('venues.news', compact('news'));
 
@@ -128,6 +136,8 @@ class VenueController extends Controller
 
     public function info(Venue $venue, Request $request)
     {
+        $this->authorize('view', $venue);
+
          return view('venues.info', compact('venue'));
 
     }

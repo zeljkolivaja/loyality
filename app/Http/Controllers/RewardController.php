@@ -26,6 +26,8 @@ class RewardController extends Controller
      */
     public function create(Venue $venue)
     {
+        $this->authorize('view', $venue);
+
          return view('rewards.create', compact('venue'));
     }
 
@@ -37,6 +39,8 @@ class RewardController extends Controller
      */
     public function store(Venue $venue, Request $request)
     {
+        $this->authorize('view', $venue);
+
         $reward = $this->validateReward();
         $venue->addReward($reward);
 
@@ -63,6 +67,8 @@ class RewardController extends Controller
      */
     public function edit(Reward $reward)
     {
+        $this->authorize('view', $venue);
+
          return view('rewards.edit', compact('reward'));
     }
 
@@ -75,6 +81,8 @@ class RewardController extends Controller
      */
     public function update(Reward $reward, Request $request)
     {
+        $this->authorize('view', $venue);
+
         $reward->update($this->validateReward());
         session()->flash('message', 'Vaša nagrada je ažurirana.');
         return redirect('/admins');
@@ -88,6 +96,8 @@ class RewardController extends Controller
      */
     public function destroy(Reward $reward)
     {
+        $this->authorize('view', $venue);
+
         $reward->delete();
         session()->flash('message', 'Nagrada je obrisana.');
         return back();

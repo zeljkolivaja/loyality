@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Loyality') }}</title>
 
- 
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -37,21 +37,21 @@
                     <ul class="navbar-nav mr-auto">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                  
+
                               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            
-                  
+
+
                             @isset(auth()->user()->admin)
                             @if (auth()->user()->admin == 0)
-                   
+
                             <li class="nav-item">
                               <a class="nav-link" href="{{ url('/admins') }}">Admins</a>
                             </li>
-                         
+
                             @endif
                             @endisset
-                  
+
                             <li class="nav-item">
                               <a class="nav-link" href="#">Pricing</a>
                             </li>
@@ -96,12 +96,12 @@
                     </ul>
                 </div>
             </div>
-            
+
         </nav>
-        
+
 
         <main class="py-4">
-  
+
             @yield('content')
 
         </main>

@@ -21,7 +21,7 @@ class User extends Authenticatable
 
    public function venues()
     {
-        return $this->belongsToMany('App\Venue')->withPivot('id','points');
+        return $this->belongsToMany('App\Venue')->withPivot('id','points','admin');
     }
 
     /**

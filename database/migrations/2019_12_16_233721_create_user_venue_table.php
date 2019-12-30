@@ -19,13 +19,13 @@ class CreateUserVenueTable extends Migration
             $table->unsignedBigInteger('venue_id');
             $table->integer('points')->default('0');
             $table->timestamps();
-
+            $table->boolean('admin')->default("1");
 
 
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
- 
+
         });
     }
 

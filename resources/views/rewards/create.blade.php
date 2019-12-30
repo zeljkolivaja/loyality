@@ -7,9 +7,7 @@
 
  <div class="text-center">
 
-
  <h4>Dodaj novu nagradu</h4>
-
 
  <form class="form-inline justify-content-center" action="/rewards/{{$venue->id}}" method="post">
      @csrf
@@ -25,13 +23,7 @@
      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Kreiraj nagradu</button>
  </form>
 
-
-
 </div>
 </div>
-
-
-
-
 
 @endsection

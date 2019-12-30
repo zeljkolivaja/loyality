@@ -16,8 +16,8 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        
-        
+
+
         if (!Auth::guest() && auth()->user()->admin == 0 )
          {
             return $next($request);

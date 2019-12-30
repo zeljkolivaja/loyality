@@ -30,8 +30,21 @@ class VenuePolicy
      */
     public function view(User $user, Venue $venue)
     {
-       $venueOwner = $venue->users[0]->getOriginal('pivot_user_id');
-       return $venueOwner == $user->id;
+
+       $user = auth()->user();
+
+       if($user->venues->find($venue->id) != null &&  $user->venues->find($venue->id)->getOriginal('pivot_admin') == 0 ) {
+        $user_venue = 0;
+       } else {
+        $user_venue = 1;
+       }
+
+       return $user_venue == 0;
+
+
+
+    //    $venueOwner = $venue->users[0]->getOriginal('pivot_user_id');
+    //    return $venueOwner == $user->id;
 
     }
 

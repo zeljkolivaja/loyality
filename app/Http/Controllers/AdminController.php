@@ -19,6 +19,7 @@ class AdminController extends Controller
     {
         $user = auth()->user();
         $venues = $user->venues;
+
         return view('venues.home', compact('venues'));
     }
 
@@ -31,6 +32,7 @@ class AdminController extends Controller
      */
     public function create()
     {
+
         return view('venues.create');
     }
 
@@ -44,7 +46,9 @@ class AdminController extends Controller
     {
         $venue = Venue::create($this->validateVenue());
         $user = auth()->user();
-        $user->venues()->attach($venue->id);
+        $user->venues()->attach($venue->id, [
+            'admin' => 0
+          ]);
         return redirect('/admins');
     }
 
@@ -60,6 +64,10 @@ class AdminController extends Controller
         $reward = Reward::where('venue_id', $id)->get();
         $this->authorize('view', $venue);
         return view('venues.show', compact('venue', 'reward'));
+
+
+
+
     }
 
     /**
@@ -69,6 +77,7 @@ class AdminController extends Controller
      */
     public function edit(Venue $venue)
     {
+        $this->authorize('view', $venue);
         return view('venues.edit', compact('venue'));
     }
 
@@ -81,6 +90,7 @@ class AdminController extends Controller
      */
     public function update(Venue $venue)
     {
+        $this->authorize('view', $venue);
         $venue->update($this->validateVenue());
         session()->flash('message', 'Vaša poslovnica je ažurirana.');
         return redirect('/admins');
@@ -94,6 +104,7 @@ class AdminController extends Controller
      */
     public function destroy(Venue $venue)
     {
+        $this->authorize('view', $venue);
         $venue->delete();
         session()->flash('message', 'Poslovnica je obrisana.');
         return redirect('/admins');

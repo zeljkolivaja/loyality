@@ -13,8 +13,18 @@
         @forelse ($venues as $venue)
         <div>
 
+            @if ($venue->getOriginal('pivot_admin') == 0)
 
             <a class="btn btn-primary" href="/admins/{{$venue->id}}/show" role="button">Upravljaj poslovnicom {{ $venue->name }}</a>
+
+
+            @else
+
+            @endif
+
+
+
+
 
         </div>
 

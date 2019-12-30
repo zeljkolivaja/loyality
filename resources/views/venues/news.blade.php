@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
 
 @forelse ($news as $article)
 
@@ -19,4 +20,5 @@
     Nemamo novih vijesti :) Provjerite kasnije
 @endforelse
 
-  @endsection
+</div>
+@endsection
