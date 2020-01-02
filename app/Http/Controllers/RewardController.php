@@ -40,10 +40,8 @@ class RewardController extends Controller
     public function store(Venue $venue, Request $request)
     {
         $this->authorize('view', $venue);
-
         $reward = $this->validateReward();
         $venue->addReward($reward);
-
         session()->flash('message', 'Vaša nagrada je dodana.');
         return back();
     }

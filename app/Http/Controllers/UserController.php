@@ -106,17 +106,13 @@ class UserController extends Controller
 
         //find the USERS venue we wish to update by its id
 
-
         if ($user->venues->find($venue_id) == null) {
-            $user->venues()->attach($venue_id);
             $user->refresh();
             // $venue = $user->venues->find($venue_id);
             // $venue->refresh();
         }
 
         $venue = $user->venues->find($venue_id);
-        // dd($venue);
-
 
         //get the id of the venue we wish to update
         $id = $venue->getOriginal('pivot_id');
@@ -126,12 +122,11 @@ class UserController extends Controller
         $check = $venue->getOriginal('pivot_points') + $points;
 
         if ($check < 0) {
-            return "ne zajebavaj";
+            return "points cannot go to negative";
         }
+
         // add the new points to existing ones
         $totalPoints = $venue->getOriginal('pivot_points') + $points;
-
-
 
         // update the join user_venue table with the new total points status
         if ($user->venues->find($venue_id) == null) {
@@ -140,14 +135,9 @@ class UserController extends Controller
             DB::table('user_venue')->where('id', $id)->update(array('points' => "$totalPoints"));
         }
 
-
         $archive = new Archive;
         $archive->used_points = $points;
         $venue->archives()->save($archive);
-
-        //https://stackoverflow.com/questions/27828476/laravel-save-one-to-many-relationship
-
-
 
         session()->flash('message', 'Bodovi korisnika ' . $user->name .  ' uspješno ažurirani. Novo stanje bodova: ' . $totalPoints);
 
@@ -165,25 +155,4 @@ class UserController extends Controller
         //
     }
 
-    public function stats(Venue $venue, User $user, Archive $archive)
-    {
-
-        // $data = Venue::where('id',1)->with('users', 'archives')->get();
-
-
-
-        //    $data =  $archive->find(6);
-
-
-        //     $data = $archive->hasManyThrough('App\User', 'App\Venue');
-
-
-
-        //    dd($data);
-
-        return view('venues/stats', compact('data'));
-
-
-        // $data = $user->venues->find($venue->id)->archives;
-    }
 }

@@ -32,7 +32,6 @@ class AdminController extends Controller
      */
     public function create()
     {
-
         return view('venues.create');
     }
 
@@ -44,11 +43,9 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $venue = Venue::create($this->validateVenue());
-        $user = auth()->user();
-        $user->venues()->attach($venue->id, [
-            'admin' => 0
-          ]);
+
+        $venue = new Venue;
+        $venue->addVenue($this->validateVenue());
         return redirect('/admins');
     }
 
@@ -64,10 +61,6 @@ class AdminController extends Controller
         $reward = Reward::where('venue_id', $id)->get();
         $this->authorize('view', $venue);
         return view('venues.show', compact('venue', 'reward'));
-
-
-
-
     }
 
     /**

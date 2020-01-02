@@ -35,6 +35,15 @@ class Venue extends Model
         $this->rewards()->create($reward);
     }
 
+    public function addVenue($venue)
+    {
+        $venue = $this->create($venue);
+        $user = auth()->user();
+        $user->venues()->attach($venue->id, [
+            'admin' => 0
+          ]);
+    }
+
     public function addNews($news)
     {
         $this->news()->create($news);
