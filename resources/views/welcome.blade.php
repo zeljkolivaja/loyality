@@ -19,13 +19,13 @@
           <li class="list-group-item">
 
             <div class="progress  position-relative" style="width: 100%; height: 30px">
-                <div class="progress-bar @if ($venue->points > $reward->reward_points) {{"bg-success"}} @endif"
+                <div class="progress-bar @if ($venue->points >= $reward->reward_points) {{"bg-success"}} @endif"
                    role="progressbar" role="progressbar"
                    style="width: {{$venue->points / $reward->reward_points * 100}}%"
                    aria-valuenow="{{$venue->points / $reward->reward_points * 100}}" aria-valuemin="0"
                    aria-valuemax="100">
                 </div>
-                <small class="justify-content-center d-flex align-self-center position-absolute w-100">@if ($venue->points >
+                <small class="justify-content-center d-flex align-self-center position-absolute w-100">@if ($venue->points >=
                    $reward->reward_points)
                   <b> Čestitamo, imate dovoljno bodova za : {{$reward->name}} :) </b>
                    @else
