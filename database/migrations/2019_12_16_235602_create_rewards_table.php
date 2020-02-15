@@ -17,14 +17,12 @@ class CreateRewardsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('reward_points')->default('0');
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
             $table->unsignedBigInteger('venue_id');
 
             $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
-
-
         });
     }
 
