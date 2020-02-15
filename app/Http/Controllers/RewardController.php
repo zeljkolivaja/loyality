@@ -28,7 +28,7 @@ class RewardController extends Controller
     {
         $this->authorize('view', $venue);
 
-         return view('rewards.create', compact('venue'));
+        return view('rewards.create', compact('venue'));
     }
 
     /**
@@ -67,7 +67,7 @@ class RewardController extends Controller
     {
         // $this->authorize('view', $venue);
 
-         return view('rewards.edit', compact('reward'));
+        return view('rewards.edit', compact('reward'));
     }
 
     /**
@@ -107,8 +107,6 @@ class RewardController extends Controller
         return request()->validate([
             'name' => 'required', 'min:3',
             'reward_points' => 'required|min:2',
-            'expiration_date' => 'required',
-            'image' => 'required'
 
         ]);
     }
