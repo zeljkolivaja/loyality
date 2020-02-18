@@ -2,10 +2,6 @@
 @section('content')
 <div class="container">
 
-
-
-
-
         <br>
 
         <div class="card" style="width: 25rem;">

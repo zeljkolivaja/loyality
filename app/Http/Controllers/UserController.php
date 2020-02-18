@@ -108,15 +108,21 @@ class UserController extends Controller
 
         if ($user->venues->find($venue_id) == null) {
             $user->refresh();
-            // $venue = $user->venues->find($venue_id);
-            // $venue->refresh();
+         }
+
+ 
+        //get the id of the venue pivot table we wish to update
+    //    $id = $venue->getOriginal('pivot_id');
+        if ( !$user->venues()->exists() ) {
+
+           $user->venues()->attach($venue_id);
+
+            $user->refresh();
         }
 
         $venue = $user->venues->find($venue_id);
 
-        //get the id of the venue we wish to update
         $id = $venue->getOriginal('pivot_id');
-
 
         // check if the total user points whent to negative, if they do abort
         $check = $venue->getOriginal('pivot_points') + $points;
@@ -135,9 +141,9 @@ class UserController extends Controller
             DB::table('user_venue')->where('id', $id)->update(array('points' => "$totalPoints"));
         }
 
-        $archive = new Archive;
-        $archive->used_points = $points;
-        $venue->archives()->save($archive);
+        // $archive = new Archive;
+        // $archive->used_points = $points;
+        // $venue->archives()->save($archive);
 
         session()->flash('message', 'Bodovi korisnika ' . $user->name .  ' uspješno ažurirani. Novo stanje bodova: ' . $totalPoints);
 
