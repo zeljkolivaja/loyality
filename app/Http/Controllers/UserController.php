@@ -73,7 +73,7 @@ class UserController extends Controller
         if (isset($userVenuePivot->rewards)) {
             $rewards = $userVenuePivot->rewards;
         } else {
-            $rewards=null;
+            $rewards = null;
         }
 
         return view('users.show', compact('user', 'points', 'venue_id', 'rewards'));
@@ -108,19 +108,18 @@ class UserController extends Controller
 
         if ($user->venues->find($venue_id) == null) {
             $user->refresh();
-         }
+        }
 
- 
+
+
         //get the id of the venue pivot table we wish to update
-    //    $id = $venue->getOriginal('pivot_id');
-        if ( !$user->venues()->exists() ) {
+        if (!$user->venues->contains($venue_id)) {
 
-           $user->venues()->attach($venue_id);
-
+            $user->venues()->attach($venue_id);
             $user->refresh();
         }
 
-        $venue = $user->venues->find($venue_id);
+        $venue = $user->venues->find((int) $venue_id);
 
         $id = $venue->getOriginal('pivot_id');
 
