@@ -42,8 +42,7 @@
 
             @forelse ($reward as $rewards)
 
-
-            <div class="card" style="width: 25rem;">
+            <div class="card" style="width: 19rem;">
                 {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                 <div class="card-body">
                     {{-- <h5 class="card-title">Nagrade</h5> --}}

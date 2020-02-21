@@ -6,6 +6,7 @@ use App\Venue;
 use App\User;
 use App\Reward;
 
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller

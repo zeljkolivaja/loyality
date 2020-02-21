@@ -15,36 +15,22 @@
 
             @if ($venue->getOriginal('pivot_admin') == 0)
 
-            <a class="btn btn-primary" href="/admins/{{$venue->id}}/show" role="button">Upravljaj poslovnicom {{ $venue->name }}</a>
-
+            <a class="btn btn-primary" href="/admins/{{$venue->id}}/show" role="button">Upravljaj poslovnicom
+                {{ $venue->name }}</a>
 
             @else
-
             @endif
-
-
-
-
 
         </div>
 
+        <br>
 
-            <br>
-
-
-            @empty
-            <p>Nemate poslovnica</p>
-            @endforelse
-            <br>
-             <a href="{{ url('/admins/create') }}">Dodaj novu poslovnicu</a>
-
-
-
-
+        @empty
+        <p>Nemate poslovnica</p>
+        @endforelse
+        <br>
+        <a href="{{ url('/admins/create') }}">Dodaj novu poslovnicu</a>
 
     </div>
-
-
-
 </div>
 @endsection

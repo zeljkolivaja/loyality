@@ -52,7 +52,7 @@ Route::group(['middleware' => ['isAdmin']], function () {
 
 
 Route::get('venues/{venue}/news', 'VenueController@showNews');
-Route::get('/', 'VisitorController@index')->middleware('auth');
+Route::get('/', 'VisitorController@index');
 
 
 
