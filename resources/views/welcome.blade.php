@@ -71,7 +71,7 @@
                     <b> {{$reward->name}} </b>
                     @endif --}}
 
-                    <li class="list-group-item">
+                    <li class="list-group-item" style="width:80%; margin:auto;">
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped" role="progressbar"
                                 style="width: {{$venue->pivot->points / $reward->reward_points * 100}}%;"
@@ -187,6 +187,8 @@
                 </div>
             </div>
         </section>
+
+
         <!-- section works -->
         <!-- section contact -->
         <section id="contact" class="section">

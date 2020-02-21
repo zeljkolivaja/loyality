@@ -22,7 +22,7 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
   <script src="assets/js/modernizr.custom.js"></script>
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}" ></script>
 
 </head>
 
@@ -195,8 +195,10 @@
       <script src="assets/js/jquery.fancybox-media.js"></script>
       <script src="assets/js/masonry.pkgd.min.js"></script>
       <script src="assets/js/imagesloaded.js"></script>
-      <script src="assets/js/jquery.nicescroll.min.js"></script>
+      <script src="assets/js/jquery.nicescroll.js"></script>
+      {{-- <script src="assets/js/jquery.nicescroll.min.js"></script> --}}
       <script src="assets/js/AnimOnScroll.js"></script>
+
       <script>
         new AnimOnScroll(document.getElementById('grid'), {
           minDuration: 0.4,
