@@ -59,7 +59,7 @@
           </div>
           <ul class="list-group list-group-flush">
 
-           @forelse ($venue->rewards as $reward)
+           @forelse ($venue->rewards->sortBy('reward_points') as $reward)
 
            <p> <b> {{$reward->name}} </b></p>
            <p>Vrijednost nagrade : <b> {{$reward->reward_points}} </b> </p>
