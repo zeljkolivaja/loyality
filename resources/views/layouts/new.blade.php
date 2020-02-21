@@ -48,10 +48,10 @@
                 <ul class="nav navbar-nav navbar-right">
 
 
-                  <li class="current"><a href="#intro">Home</a></li>
-                  <li><a href="#about">Nagradni bodovi</a></li>
-                  <li><a href="#works">Igre</a></li>
-                  <li><a href="#contact">Pronađite nas</a></li>
+                  <li class="current"><a href="#intro" data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
+                  <li><a href="#about"  data-toggle="collapse" data-target=".navbar-collapse.in">Nagradni bodovi</a></li>
+                  <li><a href="#works" data-toggle="collapse" data-target=".navbar-collapse.in">Igre</a></li>
+                  <li><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.in">Pronađite nas</a></li>
                   @isset(auth()->user()->admin)
                   @if (auth()->user()->admin == 0)
 
