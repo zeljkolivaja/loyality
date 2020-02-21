@@ -153,17 +153,17 @@
         <div class="col-md-12">
           <ul class="grid effect" id="grid">
             <li>
-              <a class="fancybox" data-fancybox-group="gallery" title="Portfolio name" href="assets/img/portfolio/1.jpg">
+              <a class="fancybox" data-fancybox-group="gallery" title="Fortnite" href="assets/img/portfolio/1.jpg">
                 <img src="assets/img/portfolio/1.jpg" alt="" />
               </a>
             </li>
-            <li><a href="assets/img/portfolio/2.jpg" class="fancybox" data-fancybox-group="gallery" title="Fortnite"><img
+            <li><a href="assets/img/portfolio/2.jpg" class="fancybox" data-fancybox-group="gallery" title="PlayerUnknown's Battlegrounds"><img
                   src="assets/img/portfolio/2.jpg" alt="" /></a></li>
-            <li><a href="assets/img/portfolio/3.jpg" class="fancybox" data-fancybox-group="gallery" title="PlayerUnknown's Battlegrounds"><img
+            <li><a href="assets/img/portfolio/3.jpg" class="fancybox" data-fancybox-group="gallery" title="FIFA 20"><img
                   src="assets/img/portfolio/3.jpg" alt="" /></a></li>
-            <li><a href="assets/img/portfolio/4.jpg" class="fancybox" data-fancybox-group="gallery" title="FIFA 20"><img
+            <li><a href="assets/img/portfolio/4.jpg" class="fancybox" data-fancybox-group="gallery" title="PES 20"><img
                   src="assets/img/portfolio/4.jpg" alt="" /></a></li>
-            <li><a href="assets/img/portfolio/5.jpg" class="fancybox" data-fancybox-group="gallery" title="PES 20"><img
+            <li><a href="assets/img/portfolio/5.jpg" class="fancybox" data-fancybox-group="gallery" title="GTA V"><img
                   src="assets/img/portfolio/5.jpg" alt="" /></a></li>
             <li><a href="assets/img/portfolio/6.jpg" class="fancybox" data-fancybox-group="gallery" title="NBA 2K20"><img
                   src="assets/img/portfolio/6.jpg" alt="" /></a></li>
