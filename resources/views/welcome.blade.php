@@ -33,6 +33,13 @@
             <p>
               Skupljene bodove izmjenite za neku od nagrada u poslovnici.
             </p>
+            <p> <b> Bodove skupljajte uplatama na račun u igraonici </b> </p>
+            <p>30 min - <b> 30 bodova </b> </p>
+            <p>1 sat - <b>70 bodova</b></p>
+            <p>2 sata - <b>150 bodova</b></p>
+            <p>3 sata - <b>220 bodova</b></p>
+
+
           </div>
         </div>
       </div>
@@ -116,6 +123,12 @@
             <p>
             <a href="http://www.delta-tenja.com/register">Registrirajte</a> se na stranici te igranjem u Delti skupljajte bodove i razmjenjujte ih za nagrade.
             </p>
+
+              <p> <b> Bodove skupljajte uplatama na račun u igraonici </b> </p>
+              <p>30 min - <b> 30 bodova </b> </p>
+              <p>1 sat - <b>70 bodova</b></p>
+              <p>2 sata - <b>150 bodova</b></p>
+              <p>3 sata - <b>220 bodova</b></p>
           </div>
         </div>
       </div>
