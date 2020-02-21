@@ -186,7 +186,7 @@
           </div>
           <div class="sub-heading">
             <p>
-              Nalazimo se u Tenju, na adresi Osječka 21b. Najbrži kontakt putem facebook stranice (pronađite je na dnu web stranice)
+              Nalazimo se u Tenju, na adresi Osječka 21b. Najbrži kontakt putem <a href="https://www.facebook.com/deltatenja/">facebook stranice</a>
             </p>
           </div>
         </div>
