@@ -44,7 +44,6 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-
         $venue = new Venue;
         $venue->addVenue($this->validateVenue());
         return redirect('/admins');
@@ -112,5 +111,13 @@ class AdminController extends Controller
             'telephone' => 'required|min:3',
             'email' => 'required|min:3'
         ]);
+    }
+
+
+    public function stats(Venue $venue, User $user)
+    {
+        $users = $venue->users;
+
+        return view('venues.stats', compact('users'));
     }
 }

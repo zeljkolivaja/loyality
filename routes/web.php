@@ -31,6 +31,8 @@ Route::group(['middleware' => ['isAdmin']], function () {
     Route::get('admins/{venue}/edit', 'AdminController@edit');
     Route::patch('admins/{venue}', 'AdminController@update');
     Route::delete('admins/{venue}', 'AdminController@destroy');
+    Route::get('admins/{venue}/stats', 'AdminController@stats');
+
 
     Route::post('venues/{venue}/rewards', 'VenueController@store');
     Route::post('venues/{venue}/createNews', 'VenueController@news');
@@ -47,6 +49,9 @@ Route::group(['middleware' => ['isAdmin']], function () {
     Route::post('users/{user}/{venue}', 'UserController@show');
     Route::patch('users/{user}', 'UserController@update');
     Route::post('users/{venue}/stats', 'UserController@stats');
+
+
+    Route::get('stats/{venue}', 'UserController@stats');
 });
 
 

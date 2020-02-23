@@ -32,6 +32,8 @@
         <a class="btn btn-primary" href="/venues/{{$venue->id}}/info" role="button">Ažuriraj podatke o poslovnici</a>
         <a class="btn btn-primary" href="/venues/{{$venue->id}}/createNews" role="button">Dodaj Vijesti</a>
         <a class="btn btn-primary" href="/rewards/{{$venue->id}}/createReward" role="button">Dodaj nagradu</a>
+        <a class="btn btn-primary" href="/admins/{{$venue->id}}/stats" role="button">Svi korisnici</a>
+
 
         <br>
 
