@@ -34,9 +34,9 @@
                 </div>
                 <div class="sub-heading">
                     <p>
-                        Skupljene bodove izmjenite za neku od nagrada u poslovnici.
+                        Skupljene bodove moguće je izmjenite za neku od nagrada u poslovnici.
                     </p>
-                    <p> <b> Bodove skupljajte uplatama na račun u igraonici </b> </p>
+                    <p> <b> Bodovi se skupljaju uplatama na račun u igraonici </b> </p>
                     <p>30 min - <b> 30 bodova </b> </p>
                     <p>1 sat - <b>70 bodova</b></p>
                     <p>2 sata - <b>150 bodova</b></p>
@@ -117,11 +117,12 @@
                 </div>
                 <div class="sub-heading">
                     <p>
-                        <a href="http://www.delta-tenja.com/register">Registrirajte</a> se na stranici te igranjem u
-                        Delti skupljajte bodove i razmjenjujte ih za nagrade.
+                        <a href="http://www.delta-tenja.com/register">Registrirajte</a> se na stranici te igranjem u Delti
+                         skupljate bodove koje mozete razmijeniti za nagrade.
                     </p>
 
-                    <p> <b> Bodove skupljajte uplatama na račun u igraonici </b> </p>
+                    <p> <b> Bodovi se skupljaju uplatama na račun u igraonici
+                    </b> </p>
                     <p>30 min - <b> 30 bodova </b> </p>
                     <p>1 sat - <b>70 bodova</b></p>
                     <p>2 sata - <b>150 bodova</b></p>
