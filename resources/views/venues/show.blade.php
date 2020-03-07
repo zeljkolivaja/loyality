@@ -6,7 +6,7 @@
 
     <div class="text-center">
 
-        <a class="btn btn-primary" href="{{ url('/admins') }}">Povratak</a>
+        <a class="btn btn-secondary" href="{{ url('/admins') }}">Povratak</a>
         <br />
 
         <br>
@@ -26,7 +26,7 @@
                 aria-describedby="pretraga korisnika" placeholder="Korisničko ime">
             <input type="hidden" class="form-control" name="venue_id" value="{{$venue->id}}" placeholder="Password">
 
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-dark" type="submit">Search</button>
         </form>
 
         <br>
@@ -36,11 +36,11 @@
 
         <div class="btn-group" role="group" aria-label="Basic example">
 
-            <a class="btn btn-primary" href="/venues/{{$venue->id}}/info" role="button">Ažuriraj podatke o
+            <a class="btn btn-dark" href="/venues/{{$venue->id}}/info" role="button">Ažuriraj podatke o
                 poslovnici</a>
-            <a class="btn btn-primary" href="/venues/{{$venue->id}}/createNews" role="button">Dodaj Vijesti</a>
-            <a class="btn btn-primary" href="/rewards/{{$venue->id}}/createReward" role="button">Dodaj nagradu</a>
-            <a class="btn btn-primary" href="/admins/{{$venue->id}}/stats" role="button">Svi korisnici</a>
+            <a class="btn btn-dark" href="/venues/{{$venue->id}}/createNews" role="button">Dodaj Vijesti</a>
+            <a class="btn btn-dark" href="/rewards/{{$venue->id}}/createReward" role="button">Dodaj nagradu</a>
+            <a class="btn btn-dark" href="/admins/{{$venue->id}}/stats" role="button">Svi korisnici</a>
         </div>
 
 
@@ -69,7 +69,7 @@
                             <li class="list-group-item"><b>Vrijednost nagrade :</b> {{  $rewards->reward_points }}</li>
                         </ul>
                         <div class="card-body">
-                            <p><a href="/rewards/{{ $rewards->id}}/edit" class="btn btn-primary"">Editiraj nagradu</a></p>
+                            <p><a href="/rewards/{{ $rewards->id}}/edit" class="btn btn-dark"">Editiraj nagradu</a></p>
 
 
               <form method="POST" action="/rewards/{{ $rewards->id }}">

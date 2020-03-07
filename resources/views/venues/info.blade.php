@@ -4,7 +4,7 @@
 
     <div class="text-center">
 
-        <a class="btn btn-primary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
+        <a class="btn btn-secondary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
 
     </div>
 
@@ -24,7 +24,7 @@
         </ul>
         <div class="card-body">
 
-            <p><a href="/admins/{{$venue->id}}/edit" class="btn btn-primary"">Ažuriraj podatke o poslovnici</a></p>
+            <p><a href="/admins/{{$venue->id}}/edit" class="btn btn-dark">Ažuriraj podatke o poslovnici</a></p>
 <form method=" POST" action="/admins/{{ $venue->id }}">
                     @method('DELETE')
                     @csrf

@@ -3,7 +3,7 @@
 
  <div class="container">
     <div class="text-center">
-   <a class="btn btn-primary" href="{{ url('/admins') }}/{{$reward->venue_id}}/show">Povratak</a>
+   <a class="btn btn-secondary" href="{{ url('/admins') }}/{{$reward->venue_id}}/show">Povratak</a>
 </div>
  <br>
 
@@ -42,7 +42,7 @@
 
 
 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ažuriraj nagradu</button>
+        <button style="margin-left:3px" class="btn btn-dark" type="submit">Ažuriraj nagradu</button>
     </form>
 
     <br/>

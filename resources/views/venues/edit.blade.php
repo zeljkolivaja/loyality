@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="text-center">
-        <p><a class="btn btn-primary" href="{{ url('/venues') }}/{{$venue->id}}/info" role="button">Povratak</a>
+        <p><a class="btn btn-secondary" href="{{ url('/venues') }}/{{$venue->id}}/info" role="button">Povratak</a>
         </p>
         <br />
 
@@ -36,7 +36,7 @@
                             value="{{$venue->email}}">
                         <input type="number" class="form-control" name="telephone" aria-describedby="Broj telefona"
                             value="{{$venue->telephone}}">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ažuriraj poslovnicu</button>
+                        <button class="btn btn-dark" type="submit">Ažuriraj poslovnicu</button>
                     </form>
 
                     <br/>

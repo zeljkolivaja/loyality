@@ -6,7 +6,7 @@
 
              <div class="text-center">
 
-                <a class="btn btn-primary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
+                <a class="btn btn-secondary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
 
             </div>
 

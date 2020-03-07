@@ -10,7 +10,7 @@
 
 
 
-        <a class="btn btn-primary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
+        <a class="btn btn-secondary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
     </div>
     <br>
 
@@ -29,7 +29,7 @@
             {{-- <input type="date" class="form-control" name="expiration_date"
          aria-describedby="Datum isteka nagrade" placeholder="Datum isteka nagrade"> --}}
 
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Kreiraj nagradu</button>
+            <button class="btn btn-dark" type="submit">Kreiraj nagradu</button>
         </form>
 
         <br/>
