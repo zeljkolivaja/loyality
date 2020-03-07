@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+
+    <div class="text-center">
+        <a class="btn btn-primary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
+     </div>
+
     <form action="/venues/{{$venue->id}}/createNews" method="post">
         @csrf
         <div class="form-group">

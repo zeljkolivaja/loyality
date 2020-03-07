@@ -2,7 +2,9 @@
 @section('content')
 
 <div class="container">
-   <a href="{{ url('/admins') }}">Povratak</a>
+    <div class="text-center">
+   <a class="btn btn-primary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
+    </div>
  <br>
 
  <div class="text-center">

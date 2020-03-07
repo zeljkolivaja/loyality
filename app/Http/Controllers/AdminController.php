@@ -118,6 +118,7 @@ class AdminController extends Controller
     {
         $users = $venue->users;
 
-        return view('venues.stats', compact('users'));
+
+        return view('venues.stats', compact('users', 'venue'));
     }
 }

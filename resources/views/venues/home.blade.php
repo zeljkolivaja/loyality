@@ -10,26 +10,29 @@
         <p>{{ session('message') }}</p>
         @endif
 
-        @forelse ($venues as $venue)
-        <div>
+        <div class="btn-group" role="group" aria-label="buttons">
 
-            @if ($venue->getOriginal('pivot_admin') == 0)
+            @forelse ($venues as $venue)
+            <div style="margin-left:1%">
 
-            <a class="btn btn-primary" href="/admins/{{$venue->id}}/show" role="button">Upravljaj poslovnicom
-                {{ $venue->name }}</a>
+                @if ($venue->getOriginal('pivot_admin') == 0)
 
-            @else
-            @endif
+                <a class="btn btn-primary" href="/admins/{{$venue->id}}/show" role="button">Upravljaj poslovnicom
+                    {{ $venue->name }}</a>
 
+                @else
+                @endif
+
+            </div>
+
+            <br>
+
+            @empty
+            <p>Nemate poslovnica</p>
+            @endforelse
         </div>
-
-        <br>
-
-        @empty
-        <p>Nemate poslovnica</p>
-        @endforelse
-        <br>
-        <a href="{{ url('/admins/create') }}">Dodaj novu poslovnicu</a>
+        <p> <br>
+            <a class="btn btn-success" href="{{ url('/admins/create') }}">Dodaj novu poslovnicu</a></p>
 
     </div>
 </div>

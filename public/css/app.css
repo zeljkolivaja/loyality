@@ -149,6 +149,10 @@ strong {
   font-weight: bolder;
 }
 
+.reward {
+    width: 100%;
+    margin: 0 auto;
+  }
 small {
   font-size: 80%;
 }
@@ -11311,6 +11315,7 @@ a.text-dark:focus {
   h3 {
     page-break-after: avoid;
   }
+
 
 @page {
     size: a3;
