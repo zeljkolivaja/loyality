@@ -19,7 +19,7 @@
                     <form action="users/{{$user->id}}/{{$venue_id}}" method="post">
                         @csrf
 
-                       <input type="submit" class="btn btn-danger" value="{{$user->name}}">
+                       <input type="submit" class="btn btn-danger" value="{{$user->name}} / {{$user->email}}">
 
                        </form>
 
