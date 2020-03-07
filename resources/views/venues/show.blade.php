@@ -12,7 +12,11 @@
         <br>
 
         @if (session('message'))
-        <p>{{ session('message') }}</p>
+
+        <div class="alert alert-primary" role="alert">
+            {{ session('message') }}
+          </div>
+
         @endif
 
         Pronađi korisnika
@@ -68,7 +72,7 @@
                             <p><a href="/rewards/{{ $rewards->id}}/edit" class="btn btn-primary"">Editiraj nagradu</a></p>
 
 
-              <form method=" POST" action="/rewards/{{ $rewards->id }}">
+              <form method="POST" action="/rewards/{{ $rewards->id }}">
                                     @method('DELETE')
                                     @csrf
                                     <input type="submit" class="btn btn-danger"

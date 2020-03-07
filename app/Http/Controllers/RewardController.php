@@ -43,7 +43,9 @@ class RewardController extends Controller
         $reward = $this->validateReward();
         $venue->addReward($reward);
         session()->flash('message', 'Vaša nagrada je dodana.');
-        return back();
+
+        return redirect('/admins/'. $venue->id . "/show");
+        // return back();
     }
 
     /**

@@ -39,6 +39,11 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ažuriraj poslovnicu</button>
                     </form>
 
+                    <br/>
+                    @if($errors->any())
+                        {!! implode('', $errors->all('<div class="alert alert-primary" role="alert">:message</div>')) !!}
+                    @endif
+
                     <br>
                 </div>
 
