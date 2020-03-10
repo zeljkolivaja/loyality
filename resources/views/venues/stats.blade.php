@@ -15,7 +15,8 @@
         </p>
     </div>
 
-    <table class="table">
+
+    <table id="myTable">
 
 
         <thead>
@@ -43,4 +44,13 @@
     </table>
 
 </div>
+
+
+
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
 @endsection
