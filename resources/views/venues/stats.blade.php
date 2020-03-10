@@ -4,13 +4,13 @@
 
     <div class="text-center">
 
-             <div class="text-center">
+        <div class="text-center">
 
-                <a class="btn btn-secondary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
+            <a class="btn btn-secondary" href="{{ url('/admins') }}/{{$venue->id}}/show">Povratak</a>
 
-            </div>
+        </div>
 
-            <br/>
+        <br />
 
         </p>
     </div>
@@ -33,7 +33,13 @@
 
             <tr>
                 <th scope="row"> <?php echo $row += 1; ?> </th>
-                <td> {{$user->name}}</td>
+                <td>
+                    <form action="{{ url('/users') }}/{{$user->id}}/{{$venue->id}}" method="post">
+                        @csrf
+                        <input type="submit" class="btn btn-alternate" value="{{$user->name}} / {{$user->email}}">
+                    </form>
+                </td>
+
                 <td> {{$user->email}}</td>
                 <td>{{$user->pivot->points}}</td>
             </tr>
