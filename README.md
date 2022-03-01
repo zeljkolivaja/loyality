@@ -1,4 +1,3 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 Aplikacija „Loyality“ je
 zamišljena kao sustav nagrađivanja potrošača, gdje mi je cilj bio upoznati se s naprednijim
